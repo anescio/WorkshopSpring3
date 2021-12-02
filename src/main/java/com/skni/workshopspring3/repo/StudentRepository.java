@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
+
     @Query(value = "SELECT * FROM Student s JOIN Course c ON s.course_id = c.id WHERE s.gender = ?1 AND c.courseType = ?2", nativeQuery = true)
     List<Student> findAllByGenderAndCourseType(GenderEnum gender, CourseTypeEnum courseType);
 
-   // @Query(value = "SELECT * FROM Student s", nativeQuery = true)
-    List<Student> findALL();
+    List<Student> findAll();
 
     List<Student> findAllBySurname(String surname);
 }
